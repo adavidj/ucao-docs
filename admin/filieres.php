@@ -46,7 +46,7 @@ $ecoles = fetchAll("SELECT * FROM ecoles ORDER BY nom");
 <body>
         <div class="sidebar">
         <div style="padding: 1.5rem; text-align: center;">
-            <img src="https://ui-avatars.com/api/?name=UCAO&background=fff&color=1a237e" style="border-radius: 50%; width: 50px; margin-bottom: 0.5rem;">
+            <img src="../img/ucao.png" style="width: 80%; margin-bottom: 0.5rem;">
             <h2 style="font-size: 1.2rem; margin: 0; letter-spacing: 1px;">UCAO ADMIN</h2>
             <p style="font-size: 0.7rem; color: rgba(255,255,255,0.5);">Panel de Gestion</p>
         </div>

@@ -86,7 +86,7 @@ if (isset($_GET['export'])) {
 <body>
         <div class="sidebar">
         <div style="padding: 1.5rem; text-align: center;">
-            <img src="https://ui-avatars.com/api/?name=UCAO&background=fff&color=1a237e" style="border-radius: 50%; width: 50px; margin-bottom: 0.5rem;">
+            <img src="../img/ucao.png" style="width: 80%; margin-bottom: 0.5rem;">
             <h2 style="font-size: 1.2rem; margin: 0; letter-spacing: 1px;">UCAO ADMIN</h2>
             <p style="font-size: 0.7rem; color: rgba(255,255,255,0.5);">Panel de Gestion</p>
         </div>
@@ -222,6 +222,10 @@ if (isset($_GET['export'])) {
                         <select name="semestre" style="width: 100%; padding: 1rem; margin-top: 8px; border: 1px solid #ddd; border-radius: 10px; background: #f9f9f9;">
                             <option value="S1">Semestre 1 (S1)</option>
                             <option value="S2">Semestre 2 (S2)</option>
+                            <option value="S3">Semestre 3 (S3)</option>
+                            <option value="S4">Semestre 4 (S4)</option>
+                            <option value="S5">Semestre 5 (S5)</option>
+                            <option value="S6">Semestre 6 (S6)</option>
                             <option value="Annuel">Annuel / Rattrapage</option>
                             <option value="Autre">Non défini</option>
                         </select>
@@ -283,6 +287,10 @@ if (isset($_GET['export'])) {
                     <select name="semestre" id="edit_semestre" style="width: 100%; padding: 0.8rem; margin-top: 5px;">
                         <option value="S1">Semestre 1 (S1)</option>
                         <option value="S2">Semestre 2 (S2)</option>
+                        <option value="S3">Semestre 3 (S3)</option>
+                        <option value="S4">Semestre 4 (S4)</option>
+                        <option value="S5">Semestre 5 (S5)</option>
+                        <option value="S6">Semestre 6 (S6)</option>
                         <option value="Annuel">Annuel / Rattrapage</option>
                         <option value="Autre">Non défini</option>
                     </select>

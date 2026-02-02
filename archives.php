@@ -64,6 +64,10 @@
                         <option value="">Tous les semestres</option>
                         <option value="S1">Semestre 1 (S1)</option>
                         <option value="S2">Semestre 2 (S2)</option>
+                        <option value="S3">Semestre 3 (S3)</option>
+                        <option value="S4">Semestre 4 (S4)</option>
+                        <option value="S5">Semestre 5 (S5)</option>
+                        <option value="S6">Semestre 6 (S6)</option>
                         <option value="Annuel">Annuel</option>
                     </select>
                 </div>
