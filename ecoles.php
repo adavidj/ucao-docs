@@ -1,9 +1,11 @@
 <?php
 require_once 'php/config.php';
 
-// Fetch schools and their programs
+// Fetch schools and their programs with document counts
 try {
-    $sql = "SELECT e.id as ecole_id, e.nom as ecole_nom, e.type as ecole_type, f.id as filiere_id, f.nom as filiere_nom 
+    $sql = "SELECT e.id as ecole_id, e.nom as ecole_nom, e.type as ecole_type, 
+                   f.id as filiere_id, f.nom as filiere_nom,
+                   (SELECT COUNT(*) FROM documents d WHERE d.filiere_id = f.id) as doc_count
             FROM ecoles e 
             LEFT JOIN filieres f ON e.id = f.ecole_id 
             ORDER BY e.nom, f.nom";
@@ -16,14 +18,17 @@ try {
             $ecoles[$eid] = [
                 'nom' => $row['ecole_nom'],
                 'type' => $row['ecole_type'],
-                'filieres' => []
+                'filieres' => [],
+                'total_docs' => 0
             ];
         }
         if ($row['filiere_id']) {
             $ecoles[$eid]['filieres'][] = [
                 'id' => $row['filiere_id'],
-                'nom' => $row['filiere_nom']
+                'nom' => $row['filiere_nom'],
+                'count' => $row['doc_count']
             ];
+            $ecoles[$eid]['total_docs'] += $row['doc_count'];
         }
     }
 } catch (Exception $e) {
@@ -44,7 +49,7 @@ try {
 <body>
     <header>
         <div class="logo">
-            <img src="https://ucaobenin.org/wp-content/uploads/2022/10/logo-ucao.png" alt="UCAO Logo">
+            <img src="img/ucao.png" alt="UCAO Logo">
             <h1>UCAO Docs</h1>
         </div>
         <nav>
@@ -64,24 +69,26 @@ try {
         </section>
 
         <div class="container">
-            <section class="ecoles-container" style="margin-bottom: 4rem;">
+            <section class="ecoles-list" style="margin-bottom: 4rem;">
                 <?php foreach ($ecoles as $id => $ecole): ?>
-                <div class="ecole-card">
-                    <h2><i class="fas fa-university"></i> <?php echo htmlspecialchars($ecole['nom']); ?></h2>
-                    <p style="margin-bottom: 1.5rem; color: var(--rouge-nuit); font-weight: 700; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px;">
-                        <?php echo $ecole['type'] == 'faculte' ? 'Faculté' : 'École'; ?>
-                    </p>
-                    <div class="filiere-list">
+                <div class="ecole-row-card">
+                    <div class="ecole-info">
+                        <div class="ecole-badge"><?php echo $ecole['type'] == 'faculte' ? 'Faculté' : 'École'; ?></div>
+                        <h2><i class="fas fa-university"></i> <?php echo htmlspecialchars($ecole['nom']); ?></h2>
+                        <div class="ecole-stats">
+                            <span><i class="fas fa-folder-open"></i> <?php echo count($ecole['filieres']); ?> Filières</span>
+                            <span><i class="fas fa-file-alt"></i> <?php echo $ecole['total_docs']; ?> Documents</span>
+                        </div>
+                    </div>
+                    <div class="filieres-grid">
                         <?php if (empty($ecole['filieres'])): ?>
                             <p style="font-size: 0.85rem; color: #888;">Aucune filière enregistrée pour cette école.</p>
                         <?php else: ?>
                             <?php foreach ($ecole['filieres'] as $filiere): ?>
-                            <div class="filiere-item">
-                                <a href="archives.php?filiere=<?php echo $filiere['id']; ?>">
-                                    <i class="fas fa-chevron-right" style="font-size: 0.7rem; color: var(--rouge-nuit);"></i>
-                                    <?php echo htmlspecialchars($filiere['nom']); ?>
-                                </a>
-                            </div>
+                            <a href="archives.php?filiere=<?php echo $filiere['id']; ?>" class="filiere-link-card">
+                                <span><?php echo htmlspecialchars($filiere['nom']); ?></span>
+                                <small><?php echo $filiere['count']; ?> docs</small>
+                            </a>
                             <?php endforeach; ?>
                         <?php endif; ?>
                     </div>

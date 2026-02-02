@@ -58,6 +58,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const filiereId = urlParams.get('filiere');
             if (filiereId) {
                 programFilter.value = filiereId;
+                // If a filiere is selected from URL, also set the school filter to match
+                const filiere = allPrograms.find(f => String(f.id) === String(filiereId));
+                if (filiere && schoolFilter) {
+                    schoolFilter.value = filiere.ecole_id;
+                    // Trigger school change to filter programs list visually even if it's already set
+                    handleSchoolChange();
+                    programFilter.value = filiereId; // Reset it because handleSchoolChange might reset it
+                }
             }
 
             applyFilters();

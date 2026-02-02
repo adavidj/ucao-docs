@@ -59,6 +59,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             max-width: 400px;
             text-align: center;
         }
+        .login-logo {
+            width: 120px;
+            margin-bottom: 1.5rem;
+        }
         .login-card h2 {
             color: var(--bleu-nuit);
             margin-bottom: 2rem;
@@ -111,7 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
     <div class="login-card">
-        <img src="https://ui-avatars.com/api/?name=UCAO&background=1a237e&color=fff" style="border-radius: 50%; width: 60px; margin-bottom: 1rem;">
+        <img src="../img/ucao.png" alt="UCAO Logo" class="login-logo">
         <h2>Espace Admin</h2>
         
         <?php if($error): ?>

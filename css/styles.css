@@ -111,7 +111,7 @@ main {
 
 /* Hero Section (Home) - Full Width */
 .hero {
-    background: var(--bleu-gradient);
+    background: linear-gradient(135deg, var(--bleu-nuit) 0%, var(--rouge-nuit) 100%);
     color: var(--blanc);
     padding: 5rem 10%;
     text-align: center;
@@ -400,36 +400,113 @@ main {
     gap: 0.4rem;
 }
 
-/* Ecoles Page Styles */
-.ecoles-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-    gap: 2rem;
+/* Ecoles & Facultés Page */
+.ecole-row-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 3rem;
+    align-items: flex-start;
+    border-left: 6px solid var(--rouge-nuit);
+    transition: transform 0.3s ease;
 }
 
-.ecole-card {
-    background: var(--blanc);
-    border-radius: 15px;
-    padding: 2rem;
-    box-shadow: var(--shadow);
-    border-top: 5px solid var(--bleu-nuit);
+.ecole-row-card:hover {
+    transform: translateX(10px);
 }
 
-.ecole-card h2 {
-    color: var(--bleu-nuit);
-    margin-bottom: 1.2rem;
-    font-size: 1.3rem;
+.ecole-info {
+    flex: 0 0 350px;
+}
+
+.ecole-badge {
+    display: inline-block;
+    background: rgba(144, 25, 9, 0.1);
+    color: var(--rouge-nuit);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
     text-transform: uppercase;
+    margin-bottom: 1rem;
 }
 
-.filiere-item a {
-    color: var(--gris-fonce);
-    font-weight: 500;
+.ecole-info h2 {
+    color: var(--rouge-nuit);
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+}
+
+.ecole-stats {
+    display: flex;
+    gap: 20px;
+    color: #666;
     font-size: 0.9rem;
+}
+
+.ecole-stats span {
     display: flex;
     align-items: center;
-    gap: 0.6rem;
-    padding: 0.6rem 0;
+    gap: 8px;
+}
+
+.ecole-stats i {
+    color: var(--bleu-clair);
+}
+
+.filieres-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.filiere-link-card {
+    background: #f8fafc;
+    border: 1px solid #edf2f7;
+    padding: 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #2d3748;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: all 0.2s ease;
+    min-height: 80px;
+}
+
+.filiere-link-card:hover {
+    background: white;
+    border-color: var(--bleu-clair);
+    box-shadow: 0 4px 12px rgba(6, 174, 213, 0.1);
+    transform: translateY(-2px);
+}
+
+.filiere-link-card span {
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 5px;
+}
+
+.filiere-link-card small {
+    color: #718096;
+    font-size: 0.8rem;
+}
+
+@media (max-width: 992px) {
+    .ecole-row-card {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 1.5rem;
+    }
+    .ecole-info {
+        flex: none;
+        width: 100%;
+    }
 }
 
 /* Contact & About */

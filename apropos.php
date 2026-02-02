@@ -11,7 +11,7 @@
 <body>
     <header>
         <div class="logo">
-            <img src="https://ucaobenin.org/wp-content/uploads/2022/10/logo-ucao.png" alt="UCAO Logo">
+            <img src="img/ucao.png" alt="UCAO Logo">
             <h1>UCAO Docs</h1>
         </div>
         <nav>
